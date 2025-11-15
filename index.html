@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Steam-like Point Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        h1, h2 {
+            color: #1a1a1a;
+        }
+        .login-section, .reward-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        .reward-card {
+            display: inline-block;
+            width: 300px;
+            margin-right: 20px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .reward-card h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .reward-card .cost {
+            font-weight: bold;
+            color: #d9534f;
+        }
+        input[type="email"], input[type="password"] {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        #login-status {
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Steam-like Point Shop</h1>
+
+    <div class="login-section">
+        <h2>Test Login</h2>
+        <input type="email" id="email" placeholder="Email (e.g., test@example.com)">
+        <input type="password" id="password" placeholder="Password">
+        
+        <!-- FIX 1: Calling window.handleLogin() explicitly -->
+        <button onclick="window.handleLogin()">Login</button>
+        
+        <div id="login-status">Checking login status...</div>
+        
+        <!-- FIX 2: Calling window.handleLogout() explicitly -->
+        <button onclick="window.handleLogout()">Logout</button> 
+    </div>
+
+    <hr>
+    
+    <h2>Point Balance</h2>
+    <div id="point-display">
+        Your Points: <span id="current-points">Loading...</span>
+    </div>
+
+    <hr>
+    
+    <h2>Rewards Catalog</h2>
+    <div id="rewards-container">
+        Loading rewards...
+    </div>
+
+    <!-- 1. Load the Supabase Library (MUST load first) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- FIX 3: Load your script last, with NO 'defer' attribute -->
+    <script src="shop_logic.js"></script> 
+
+</body>
+</html>
